@@ -13,7 +13,7 @@
     <title>Original - Lifestyle Blog Template</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
@@ -87,7 +87,7 @@
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
-                        <a href="index.html" class="original-logo"><h1>MOVIES STORE</h1></a>
+                        <a href="index.html" class="original-logo"><h1> MOVIES STORE</h1></a>
                     </div>
                 </div>
             </div>
@@ -121,6 +121,8 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
+                                    <li><a href="{% url 'about' %}">about us</a></li>
+
                                     <li><a href="{% url 'contact' %}">Contact</a></li>
                                     {% if user.is_authenticated %}
                                     <li>hai{{user.username}}</li>
@@ -156,22 +158,22 @@
         <!-- Hero Slides Area -->
         <div class="hero-slides owl-carousel">
             <!-- Single Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bd-img/hollywood.jpg' %});">
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/poi.jpg' %});">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
                             <div class="slide-content text-center">
                                 <div class="post-tag">
-                                    <a href="#" data-animation="fadeInUp">Trending</a>
+                                    <a href="#" data-animation="fadeInUp"></a>
                                 </div>
-                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="single-post.html">MOLLYWOOD MOVIES</a></h2>
+                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="single-post.html">PUSHPA</a></h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Single Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/pathaan.jpg' %});">
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/kgf1.jpg' %});">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
@@ -186,7 +188,7 @@
                 </div>
             </div>
             <!-- Single Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url({% staticjpg);">
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/09812.jpg' %});">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
@@ -224,20 +226,20 @@
                 <!-- Single Blog Area -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-catagory-area clearfix mb-100">
-                        <img src="{% static 'img/bg-img/bd.jpg' %}" alt="">
+                        <img src="{% static 'img/bg-img/kamma.jpg' %}" alt="">
                         <!-- Catagory Title -->
                         <div class="catagory-title">
-                            <a href="#">Lifestyle posts</a>
+                            <a href="#">KAMMARA SAMBHAVAM</a>
                         </div>
                     </div>
                 </div>
                 <!-- Single Blog Area -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-catagory-area clearfix mb-100">
-                        <img src="{% static 'img/bg-img/gg.jpg' %}" alt="">
+                        <img src="{% static 'img/bg-img/sill4.jpg' %}" alt="">
                         <!-- Catagory Title -->
                         <div class="catagory-title">
-                            <a href="#">latest posts</a>
+                            <a href="#">SILLINU ORU KADHAL</a>
                         </div>
                     </div>
                 </div>
@@ -266,8 +268,8 @@
                                     <div class="line"></div>
                                     <a href="#" class="post-tag">{{i.cate}}</a>
 
-                                    <h4><a href="#" class="post-headline">{{i.name}}</a></h4>
-                                    <p>{{i.desc}}</p>
+                                    <h4><a href="{% url 'detail' i.id %}" class="post-headline">{{i.name}}</a></h4>
+                                    <p>{{i.desc|truncatewords:50}}</p>
                                     <div class="post-meta">
                                         <p>By <a href="#">{{i.author}}</a></p>
                                         <p>3 comments</p>
@@ -299,11 +301,11 @@
 <!--                                    <div class="post-meta">-->
 <!--                                        <p>By <a href="#">james smith</a></p>-->
 <!--                                        <p>3 comments</p>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
 <!--                    &lt;!&ndash; Single Blog Area  &ndash;&gt;-->
@@ -540,7 +542,7 @@
         <div class="instagram-slides owl-carousel">
             <!-- Single Insta Feed -->
             <div class="single-insta-feed">
-                <img src="img/instagram-img/1.png" alt="">
+                <img src="{% static 'img/instagram-img/1.png' %}" alt="">
                 <!-- Hover Effects -->
                 <div class="hover-effects">
                     <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
@@ -548,7 +550,7 @@
             </div>
             <!-- Single Insta Feed -->
             <div class="single-insta-feed">
-                <img src="img/instagram-img/2.png" alt="">
+                <img src="{% static 'img/instagram-img/2.png' %}" alt="">
                 <!-- Hover Effects -->
                 <div class="hover-effects">
                     <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
@@ -556,7 +558,7 @@
             </div>
             <!-- Single Insta Feed -->
             <div class="single-insta-feed">
-                <img src="img/instagram-img/3.png" alt="">
+                <img src="{% static 'img/instagram-img/3.png' %}" alt="">
                 <!-- Hover Effects -->
                 <div class="hover-effects">
                     <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
@@ -564,7 +566,7 @@
             </div>
             <!-- Single Insta Feed -->
             <div class="single-insta-feed">
-                <img src="img/instagram-img/4.png" alt="">
+                <img src="{% static 'img/instagram-img/4.png' %}" alt="">
                 <!-- Hover Effects -->
                 <div class="hover-effects">
                     <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
@@ -572,7 +574,7 @@
             </div>
             <!-- Single Insta Feed -->
             <div class="single-insta-feed">
-                <img src="img/instagram-img/5.png" alt="">
+                <img src="{% static 'img/instagram-img/5.png' %}" alt="">
                 <!-- Hover Effects -->
                 <div class="hover-effects">
                     <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
@@ -580,7 +582,7 @@
             </div>
             <!-- Single Insta Feed -->
             <div class="single-insta-feed">
-                <img src="img/instagram-img/6.png" alt="">
+                <img src="{% static 'img/instagram-img/6.png' %}" alt="">
                 <!-- Hover Effects -->
                 <div class="hover-effects">
                     <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>
@@ -588,7 +590,7 @@
             </div>
             <!-- Single Insta Feed -->
             <div class="single-insta-feed">
-                <img src="img/instagram-img/7.png" alt="">
+                <img src="{% static 'img/instagram-img/7.png' %}" alt="">
                 <!-- Hover Effects -->
                 <div class="hover-effects">
                     <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa fa-instagram"></i></a>

@@ -4,6 +4,19 @@ from django.contrib.auth.models import User, auth
 
 
 # Create your views here.
+def blogPost(request, slug):
+    post=Post.objects.filter(slug=slug).first()
+    comments= BlogComment.objects.filter(post=post, parent=None)
+    replies= BlogComment.objects.filter(post=post).exclude(parent=None)
+    replyDict={}
+    for reply in replies:
+        if reply.parent.sno not in replyDict.keys():
+            replyDict[reply.parent.sno]=[reply]
+        else:
+            replyDict[reply.parent.sno].append(reply)
+
+    context={'post':post, 'comments': comments, 'user': request.user, 'replyDict': replyDict}
+    return render(request, "blog/blogPost.html", context)
 def register(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
@@ -44,9 +57,10 @@ def login(request):
             messages.info(request, 'invalid details')
             return redirect('login')
     else:
-        return render(request, 'login.html')
+        return render(request,'login.html')
 
 
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
